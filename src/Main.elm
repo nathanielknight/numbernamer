@@ -11,11 +11,11 @@ import Html.Events exposing (onInput)
 
 main =
     Browser.sandbox
-        { init = 0, update = update, view = view }
+        { init = "", update = update, view = view }
 
 
 type alias Model =
-    Int
+    String
 
 
 type Msg
@@ -26,15 +26,20 @@ update : Msg -> Model -> Model
 update (Input s) m =
     case s of
         "" ->
-            0
+            ""
 
         _ ->
-            case String.toInt s of
-                Just n ->
-                    n
+            if isAllDigits s then
+                s
 
-                Nothing ->
-                    m
+            else
+                m
+
+
+isAllDigits s =
+    s
+        |> String.toList
+        |> List.all Char.isDigit
 
 
 view : Model -> Html.Html Msg
@@ -49,7 +54,7 @@ inputform : Model -> Html.Html Msg
 inputform m =
     Html.input
         [ attribute "type" "number"
-        , value <| String.fromInt m
+        , value m
         , onInput Input
         , Html.Attributes.placeholder "Got a big number?"
         , Html.Attributes.max numbermax
@@ -105,7 +110,6 @@ numberGroups m =
     let
         groups =
             m
-                |> String.fromInt
                 |> String.toList
                 |> List.reverse
                 |> groupsOf 3
