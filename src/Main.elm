@@ -25,10 +25,10 @@ type Msg
 update : Msg -> Model -> Model
 update (Input s) m =
     if isAllDigits s && (66 >= String.length s) then
-                s
+        s
 
-            else
-                m
+    else
+        m
 
 
 isAllDigits s =
@@ -106,6 +106,7 @@ type alias ParsedNumber =
 namedNumberGroups : List String -> List ( String, String )
 namedNumberGroups ns =
     zipShortest ns partnames
+        |> List.filter (Tuple.first >> String.isEmpty >> not)
 
 
 numberGroups : Model -> List String
@@ -119,10 +120,22 @@ numberGroups m =
 
         combine gs =
             gs
-                |> List.map (String.reverse << String.fromList)
+                |> List.map (stripLeadingZeros << String.reverse << String.fromList)
                 |> List.reverse
     in
     combine groups
+
+
+stripLeadingZeros s =
+    case String.uncons s of
+        Nothing ->
+            s
+
+        Just ( '0', r ) ->
+            stripLeadingZeros r
+
+        Just _ ->
+            s
 
 
 groupsOf : Int -> List a -> List (List a)
