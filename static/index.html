@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css" />
+    <title>Number Namer</title>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+        body {
+            max-width: 20em;
+            padding: 0 auto;
+            text-align: center;
+            font-family: Inter, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 16pt;
+            text-decoration: underline;
+        }
+
+        div {
+            flex: 1;
+        }
+
+        input {
+            font-size: 20pt;
+            width: 100%;
+            text-align: center;
+            border: 1px solid gray;
+            margin: 1em 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-feature-settings: "tnum" 1;
+        }
+
+        tr {
+            padding: 0.2em;
+        }
+
+        td {
+            width: 45%;
+            padding: 0 2.5%;
+            display: inline-block;
+        }
+
+        td:nth-child(1) {
+            text-align: right;
+        }
+
+        td:nth-child(2) {
+            text-align: left;
+        }
+
+        footer {
+            color: gray;
+            font-size: 12pt;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Number Namer</h1>
+    <div id="app"></div>
+    <script src="app.js"></script>
+    <script>
+        let appelement = document.getElementById("app");
+        Elm.Main.init({ node: appelement });
+    </script>
+    <footer>
+        <p>
+            An
+            <a href="https://elm-lang.org/">Elm</a>
+            app by
+            <a href="https://nathanielknight.ca/">Nat Knight</a>
+            ♞
+            <a href="https://bitbucket.org/nathanielknight/numbernamer">Source code</a>
+        </p>
+
+    </footer>
+</body>
+
+</html>

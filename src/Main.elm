@@ -47,7 +47,16 @@ view m =
 
 inputform : Model -> Html.Html Msg
 inputform m =
-    Html.input [ attribute "type" "number", value <| String.fromInt m, onInput Input, Html.Attributes.max numbermax, Html.Attributes.min numbermin, Html.Attributes.step numberstep ] []
+    Html.input
+        [ attribute "type" "number"
+        , value <| String.fromInt m
+        , onInput Input
+        , Html.Attributes.placeholder "Got a big number?"
+        , Html.Attributes.max numbermax
+        , Html.Attributes.min numbermin
+        , Html.Attributes.step numberstep
+        ]
+        []
 
 
 display : Model -> Html.Html Msg
@@ -79,7 +88,7 @@ numberstep =
 
 
 partnames =
-    [ "", "thousand", "million", "billion", "trillion" ]
+    [ ".", "thousand", "million", "billion", "trillion", "quadrillion", "qintillion", "sextillion", "septillion" ]
 
 
 type alias ParsedNumber =
