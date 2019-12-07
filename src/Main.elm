@@ -24,12 +24,7 @@ type Msg
 
 update : Msg -> Model -> Model
 update (Input s) m =
-    case s of
-        "" ->
-            ""
-
-        _ ->
-            if isAllDigits s then
+    if isAllDigits s && (66 >= String.length s) then
                 s
 
             else
@@ -53,13 +48,10 @@ view m =
 inputform : Model -> Html.Html Msg
 inputform m =
     Html.input
-        [ attribute "type" "number"
+        [ attribute "type" "text"
         , value m
         , onInput Input
         , Html.Attributes.placeholder "Got a big number?"
-        , Html.Attributes.max numbermax
-        , Html.Attributes.min numbermin
-        , Html.Attributes.step numberstep
         , Html.Attributes.autofocus True
         ]
         []
@@ -79,18 +71,6 @@ display m =
 
 
 -------------------------------------------------------------------
-
-
-numbermax =
-    "999999999999999"
-
-
-numbermin =
-    "0"
-
-
-numberstep =
-    "1"
 
 
 partnames =
