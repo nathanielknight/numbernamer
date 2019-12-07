@@ -60,6 +60,7 @@ inputform m =
         , Html.Attributes.max numbermax
         , Html.Attributes.min numbermin
         , Html.Attributes.step numberstep
+        , Html.Attributes.autofocus True
         ]
         []
 
