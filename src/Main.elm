@@ -94,7 +94,29 @@ numberstep =
 
 
 partnames =
-    [ ".", "thousand", "million", "billion", "trillion", "quadrillion", "qintillion", "sextillion", "septillion" ]
+    [ "."
+    , "thousand"
+    , "million"
+    , "billion"
+    , "trillion"
+    , "quadrillion"
+    , "qintillion"
+    , "sextillion"
+    , "septillion"
+    , "octillion"
+    , "nonillion"
+    , "decillion"
+    , "undecillion"
+    , "duodecillion"
+    , "tredecillion"
+    , "quattuordecillion"
+    , "quindecillion"
+    , "sexdecillion"
+    , "septdecillion"
+    , "octdecillion"
+    , "novemdecillion"
+    , "vingdecillion"
+    ]
 
 
 type alias ParsedNumber =
