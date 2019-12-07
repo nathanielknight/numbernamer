@@ -74,7 +74,7 @@ display m =
 
 
 partnames =
-    [ "."
+    [ "◾"
     , "thousand"
     , "million"
     , "billion"
