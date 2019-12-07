@@ -1,0 +1,12 @@
+(task "build"
+    "Compile Elm code and copy static files."
+    (empty-dir "output")
+    (par
+        (exec elm make --output "./output/app.js" --optimize "./src/Main.elm")
+        (rec-copy "static" "output")
+    )
+)
+
+(task "static"
+    "Update static files, leaving Elm code as is."
+    (rec-copy "static" "output"))
