@@ -9,6 +9,7 @@ import Html.Attributes exposing (attribute, value)
 import Html.Events exposing (onInput)
 
 
+main : Program () Model Msg
 main =
     Browser.sandbox
         { init = "", update = update, view = view }
@@ -31,6 +32,7 @@ update (Input s) m =
         m
 
 
+isAllDigits : String -> Bool
 isAllDigits s =
     s
         |> String.toList
@@ -53,6 +55,7 @@ inputform m =
         , onInput Input
         , Html.Attributes.placeholder "Got a big number?"
         , Html.Attributes.autofocus True
+        , Html.Attributes.attribute "inputmode" "numeric"
         ]
         []
 
@@ -73,6 +76,7 @@ display m =
 -------------------------------------------------------------------
 
 
+partnames : List String
 partnames =
     [ "◾"
     , "thousand"
@@ -99,10 +103,6 @@ partnames =
     ]
 
 
-type alias ParsedNumber =
-    List String
-
-
 namedNumberGroups : List String -> List ( String, String )
 namedNumberGroups ns =
     zipShortest ns partnames
@@ -126,6 +126,7 @@ numberGroups m =
     combine groups
 
 
+stripLeadingZeros : String -> String
 stripLeadingZeros s =
     case String.uncons s of
         Nothing ->
@@ -143,6 +144,7 @@ groupsOf n xs =
     group xs n []
 
 
+group : List a -> Int -> List (List a) -> List (List a)
 group xs n acc =
     let
         grp =
